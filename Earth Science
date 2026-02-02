@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Earth Science Quiz Game</title>
 <style>
+
 .choices button:disabled {
   background: #1e293b;
   color: #94a3b8;
