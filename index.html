@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Earth & Space Science Review</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+  }
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  h1, h2 {
+    text-align: center;
+  }
+  .btn {
+    width: 100%;
+    padding: 14px;
+    margin: 8px 0;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: #334155;
+    color: white;
+  }
+  .correct {
+    background: #16a34a !important;
+  }
+  .wrong {
+    background: #dc2626 !important;
+  }
+  .disabled {
+    background: #1e293b;
+    color: #94a3b8;
+    cursor: not-allowed;
+  }
+</style>
+</head>
+
+<body>
+<div class="container" id="app"></div>
+
+<script>
+/* =====================================================
+   TOPIC-BASED QUESTION BANK
+   ===================================================== */
+
+const quiz = {
+
+  /* =================================================
+     TOPIC 1: Earth’s Interior & Plate Tectonics (1–35)
+     ================================================= */
+  "Earth’s Interior & Plate Tectonics (1–35)": [
+
+    { q:"Which is the largest ocean on Earth?",
+      c:["Atlantic Ocean","Indian Ocean","Pacific Ocean","Arctic Ocean"], a:2 },
+
+    { q:"About what percentage of Earth’s surface is covered by water?",
+      c:["50%","60%","70%","80%"], a:2 },
+
+    { q:"The Philippines is located along which major geologic feature?",
+      c:["Mid-Atlantic Ridge","Pacific Ring of Fire","Great Rift Valley","San Andreas Fault"], a:1 },
+
+    { q:"What is the outermost layer of the Earth called?",
+      c:["Mantle","Core","Crust","Asthenosphere"], a:2 },
+
+    { q:"Which layer of the Earth is the hottest?",
+      c:["Crust","Mantle","Outer Core","Inner Core"], a:3 },
+
+    { q:"Which type of plate boundary occurs when plates move away from each other?",
+      c:["Convergent","Transform","Divergent","Subduction"], a:2 },
+
+    { q:"Earthquakes are most commonly caused by",
+      c:["Volcanic eruptions","Plate movements","Ocean waves","Weather changes"], a:1 },
+
+    { q:"Which layer of the Earth is semi-molten and allows plates to move?",
+      c:["Lithosphere","Asthenosphere","Crust","Inner Core"], a:1 },
+
+    { q:"What instrument is used to measure earthquakes?",
+      c:["Barometer","Thermometer","Seismograph","Anemometer"], a:2 },
+
+    { q:"What scale is used to measure earthquake magnitude?",
+      c:["Celsius Scale","Beaufort Scale","Richter Scale","Fujita Scale"], a:2 },
+
+    { q:"What type of plate boundary occurs when one plate sinks beneath another?",
+      c:["Transform","Divergent","Convergent","Passive"], a:2 },
+
+    { q:"What process causes the sinking of a denser plate beneath a less dense plate?",
+      c:["Rifting","Collision","Subduction","Spreading"], a:2 },
+
+    { q:"Which plate boundary is most associated with earthquakes but little volcanic activity?",
+      c:["Convergent","Divergent","Transform","Subduction"], a:2 },
+
+    { q:"What landform is commonly created at divergent plate boundaries on the ocean floor?",
+      c:["Trench","Volcano","Mid-ocean ridge","Mountain range"], a:2 },
+
+    { q:"Which layer of the Earth is made mostly of iron and nickel?",
+      c:["Crust","Mantle","Outer Core","Lithosphere"], a:2 },
+
+    { q:"Which Earth layer is liquid in state?",
+      c:["Inner Core","Outer Core","Mantle","Crust"], a:1 },
+
+    { q:"What causes tectonic plates to move?",
+      c:["Wind currents","Ocean tides","Mantle convection","Solar energy"], a:2 },
+
+    { q:"Which plate is the largest tectonic plate on Earth?",
+      c:["African Plate","Eurasian Plate","Pacific Plate","North American Plate"], a:2 },
+
+    { q:"Which geologic feature is formed at convergent plate boundaries?",
+      c:["Mid-ocean ridges","Rift valleys","Mountain ranges","Abyssal plains"], a:2 },
+
+    { q:"Which type of stress pulls rocks apart?",
+      c:["Compressional","Shear","Tensional","Thermal"], a:2 },
+
+    { q:"Which type of stress pushes rocks together?",
+      c:["Tensional","Shear","Compressional","Elastic"], a:2 },
+
+    { q:"Which type of stress causes rocks to slide past each other?",
+      c:["Compressional","Tensional","Shear","Vertical"], a:2 },
+
+    { q:"What type of fault is caused by tensional stress?",
+      c:["Reverse fault","Normal fault","Strike-slip fault","Thrust fault"], a:1 },
+
+    { q:"What type of fault is caused by compressional stress?",
+      c:["Normal fault","Strike-slip fault","Reverse fault","Transform fault"], a:2 },
+
+    { q:"What type of fault is caused by shear stress?",
+      c:["Normal fault","Reverse fault","Strike-slip fault","Oblique fault"], a:2 },
+
+    { q:"Which seismic wave travels fastest?",
+      c:["P wave","S wave","Surface wave","Love wave"], a:0 },
+
+    { q:"Which seismic wave cannot travel through liquids?",
+      c:["P wave","Surface wave","Love wave","S wave"], a:3 },
+
+    { q:"Which seismic wave causes the most damage on Earth's surface?",
+      c:["P wave","S wave","Surface wave","Body wave"], a:2 },
+
+    { q:"What is the point on Earth's surface directly above the earthquake focus?",
+      c:["Hypocenter","Epicenter","Fault line","Crust point"], a:1 },
+
+    { q:"What do you call the point inside the Earth where an earthquake starts?",
+      c:["Epicenter","Focus","Fault","Wave center"], a:1 },
+
+    { q:"Which scale measures the intensity of earthquake damage?",
+      c:["Richter Scale","Moment Magnitude Scale","Mercalli Scale","Fujita Scale"], a:2 },
+
+    { q:"Which type of volcano has broad, gently sloping sides?",
+      c:["Cinder cone","Composite","Shield volcano","Lava dome"], a:2 },
+
+    { q:"Which type of volcano is most explosive?",
+      c:["Shield volcano","Cinder cone","Composite volcano","Fissure volcano"], a:2 },
+
+    { q:"What is magma called once it reaches the Earth's surface?",
+      c:["Lava","Basalt","Ash","Tephra"], a:0 },
+
+    { q:"Which volcanic material consists of solid fragments ejected during an eruption?",
+      c:["Lava","Magma","Pyroclastic materials","Basalt"], a:2 }
+
+  ],
+
+  /* =================================================
+     TOPIC 2 WILL BE PASTED HERE (36–70)
+     ================================================= */
+};
+
+/* =====================================================
+   QUIZ ENGINE (DO NOT EDIT)
+   ===================================================== */
+
+let currentTopic = "";
+let questions = [];
+let current = 0;
+let score = 0;
+let selected = null;
+
+function showTopicMenu() {
+  const app = document.getElementById("app");
+  app.innerHTML = "<h1>🌍 Earth & Space Science Review</h1><h2>Select a Topic</h2>";
+  for (let topic in quiz) {
+    const btn = document.createElement("button");
+    btn.className = "btn";
+    btn.textContent = topic;
+    btn.onclick = () => startTopic(topic);
+    app.appendChild(btn);
+  }
+}
+
+function startTopic(topic) {
+  currentTopic = topic;
+  questions = quiz[topic];
+  current = 0;
+  score = 0;
+  loadQuestion();
+}
+
+function loadQuestion() {
+  selected = null;
+  const q = questions[current];
+
+  const app = document.getElementById("app");
+  app.innerHTML = `
+    <h2>${currentTopic}</h2>
+    <p>Question ${current + 1} / ${questions.length} | Score: ${score}</p>
+    <p><strong>${q.q}</strong></p>
+    <div id="choices"></div>
+    <button class="btn" onclick="nextQuestion()">Next</button>
+  `;
+
+  const choicesDiv = document.getElementById("choices");
+
+  q.c.forEach((choice, index) => {
+    const btn = document.createElement("button");
+    btn.className = "btn";
+    btn.textContent = choice;
+
+    btn.onclick = () => {
+      if (selected !== null) return;
+      selected = index;
+
+      const buttons = document.querySelectorAll("#choices button");
+      buttons.forEach((b, i) => {
+        b.disabled = true;
+        b.classList.add("disabled");
+        if (i === q.a) b.classList.add("correct");
+      });
+
+      if (index === q.a) {
+        score++;
+      } else {
+        btn.classList.add("wrong");
+      }
+    };
+
+    choicesDiv.appendChild(btn);
+  });
+}
+
+function nextQuestion() {
+  if (selected === null) {
+    alert("Please select an answer.");
+    return;
+  }
+  current++;
+  if (current < questions.length) {
+    loadQuestion();
+  } else {
+    document.getElementById("app").innerHTML = `
+      <h2>${currentTopic}</h2>
+      <h1>🎉 Topic Complete</h1>
+      <p>Your Score: <strong>${score} / ${questions.length}</strong></p>
+      <button class="btn" onclick="showTopicMenu()">Back to Topics</button>
+    `;
+  }
+}
+
+showTopicMenu();
+
+/* =====================================================
+   ⬇️ NEXT: CHUNK 2 WILL BE PASTED BELOW THIS LINE
+   ===================================================== */
+</script>
+
+</body>
+</html>
