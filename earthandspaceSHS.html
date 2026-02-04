@@ -55,118 +55,129 @@ const quiz = Array.from({ length: 100 }, (_, i) => {
   const q = [
 
     // 1–10 Earth Structure & Motions
-    {
-      q: "What layer of the Earth do humans live on?",
-      c: ["Mantle", "Core", "Crust", "Inner core"],
-      a: 2
-    },
-    {
-      q: "Which motion of the Earth causes day and night?",
-      c: ["Revolution", "Rotation", "Axial tilt", "Precession"],
-      a: 1
-    },
-    {
-      q: "What causes the seasons on Earth?",
-      c: ["Distance from the Sun", "Earth’s axial tilt", "Moon phases", "Earth’s rotation"],
-      a: 1
-    },
-    {
-      q: "Which part of the Earth is the hottest?",
-      c: ["Crust", "Mantle", "Outer core", "Inner core"],
-      a: 3
-    },
-    {
-      q: "Which layer of the Earth generates the magnetic field?",
-      c: ["Crust", "Mantle", "Outer core", "Inner core"],
-      a: 2
-    },
-    {
-      q: "What shape best describes the Earth?",
-      c: ["Perfect sphere", "Flat disk", "Oblate spheroid", "Cube"],
-      a: 2
-    },
-    {
-      q: "How long does Earth take to revolve around the Sun?",
-      c: ["24 hours", "30 days", "365 days", "12 hours"],
-      a: 2
-    },
-    {
-      q: "What force keeps objects on Earth’s surface?",
-      c: ["Magnetism", "Gravity", "Pressure", "Energy"],
-      a: 1
-    },
-    {
-      q: "What causes the Coriolis effect?",
-      c: ["Gravity", "Earth’s rotation", "Earth’s revolution", "Axial tilt"],
-      a: 1
-    },
-    {
-      q: "Which motion of Earth causes a year?",
-      c: ["Rotation", "Revolution", "Axial tilt", "Orbit"],
-      a: 1
-    },
+    { q:"What layer of the Earth do humans live on?", c:["Mantle","Core","Crust","Inner core"], a:2 },
+    { q:"Which motion of the Earth causes day and night?", c:["Revolution","Rotation","Axial tilt","Precession"], a:1 },
+    { q:"What causes the seasons on Earth?", c:["Distance from the Sun","Earth’s axial tilt","Moon phases","Earth’s rotation"], a:1 },
+    { q:"Which part of the Earth is the hottest?", c:["Crust","Mantle","Outer core","Inner core"], a:3 },
+    { q:"Which layer of the Earth generates the magnetic field?", c:["Crust","Mantle","Outer core","Inner core"], a:2 },
+    { q:"What shape best describes the Earth?", c:["Perfect sphere","Flat disk","Oblate spheroid","Cube"], a:2 },
+    { q:"How long does Earth take to revolve around the Sun?", c:["24 hours","30 days","365 days","12 hours"], a:2 },
+    { q:"What force keeps objects on Earth’s surface?", c:["Magnetism","Gravity","Pressure","Energy"], a:1 },
+    { q:"What causes the Coriolis effect?", c:["Gravity","Earth’s rotation","Earth’s revolution","Axial tilt"], a:1 },
+    { q:"Which motion of Earth causes a year?", c:["Rotation","Revolution","Axial tilt","Orbit"], a:1 },
 
     // 11–20 Plate Tectonics & Earthquakes
-    {
-      q: "What causes tectonic plates to move?",
-      c: ["Wind", "Mantle convection currents", "Earth’s rotation", "Moon’s gravity"],
-      a: 1
-    },
-    {
-      q: "Which type of plate boundary occurs when two plates collide?",
-      c: ["Transform", "Divergent", "Convergent", "Passive"],
-      a: 2
-    },
-    {
-      q: "Which plate boundary forms rift valleys?",
-      c: ["Transform", "Convergent", "Divergent", "Subduction"],
-      a: 2
-    },
-    {
-      q: "Which plate boundary causes earthquakes but usually no volcanoes?",
-      c: ["Convergent", "Divergent", "Transform", "Passive"],
-      a: 2
-    },
-    {
-      q: "What is the main cause of earthquakes?",
-      c: ["Volcanic eruptions", "Weather changes", "Sudden plate movement", "Ocean waves"],
-      a: 2
-    },
-    {
-      q: "Which instrument is used to measure earthquakes?",
-      c: ["Thermometer", "Barometer", "Seismograph", "Hygrometer"],
-      a: 2
-    },
-    {
-      q: "What happens at a subduction zone?",
-      c: ["Plates move apart", "Plates slide past each other", "One plate sinks beneath another", "Plates stop moving"],
-      a: 2
-    },
-    {
-      q: "Which type of seismic wave causes the most damage at Earth’s surface?",
-      c: ["P-waves", "S-waves", "Surface waves", "Body waves"],
-      a: 2
-    },
-    {
-      q: "Which evidence supports the theory of plate tectonics?",
-      c: ["Cloud patterns", "Matching fossils on different continents", "Moon phases", "Wind direction"],
-      a: 1
-    },
-    {
-      q: "Which layer of Earth do tectonic plates belong to?",
-      c: ["Asthenosphere", "Mantle", "Lithosphere", "Outer core"],
-      a: 2
-    }
+    { q:"What causes tectonic plates to move?", c:["Wind","Mantle convection currents","Earth’s rotation","Moon’s gravity"], a:1 },
+    { q:"Which type of plate boundary occurs when two plates collide?", c:["Transform","Divergent","Convergent","Passive"], a:2 },
+    { q:"Which plate boundary forms rift valleys?", c:["Transform","Convergent","Divergent","Subduction"], a:2 },
+    { q:"Which plate boundary causes earthquakes but usually no volcanoes?", c:["Convergent","Divergent","Transform","Passive"], a:2 },
+    { q:"What is the main cause of earthquakes?", c:["Volcanic eruptions","Weather changes","Sudden plate movement","Ocean waves"], a:2 },
+    { q:"Which instrument is used to measure earthquakes?", c:["Thermometer","Barometer","Seismograph","Hygrometer"], a:2 },
+    { q:"What happens at a subduction zone?", c:["Plates move apart","Plates slide past each other","One plate sinks beneath another","Plates stop moving"], a:2 },
+    { q:"Which type of seismic wave causes the most damage at Earth’s surface?", c:["P-waves","S-waves","Surface waves","Body waves"], a:2 },
+    { q:"Which evidence supports the theory of plate tectonics?", c:["Cloud patterns","Matching fossils on different continents","Moon phases","Wind direction"], a:1 },
+    { q:"Which layer of Earth do tectonic plates belong to?", c:["Asthenosphere","Mantle","Lithosphere","Outer core"], a:2 },
+
+    // 21–30 Rocks & Rock Cycle
+    { q:"Which type of rock forms from molten magma or lava?", c:["Sedimentary","Metamorphic","Igneous","Fossil"], a:2 },
+    { q:"Which type of rock forms from compacted sediments?", c:["Igneous","Metamorphic","Sedimentary","Magma"], a:2 },
+    { q:"Which type of rock forms due to heat and pressure?", c:["Igneous","Sedimentary","Metamorphic","Basalt"], a:2 },
+    { q:"What process breaks rocks into smaller pieces?", c:["Erosion","Weathering","Deposition","Lithification"], a:1 },
+    { q:"What process moves weathered material from one place to another?", c:["Weathering","Erosion","Deposition","Melting"], a:1 },
+    { q:"What process occurs when sediments settle?", c:["Weathering","Erosion","Deposition","Metamorphism"], a:2 },
+    { q:"What process turns sediments into sedimentary rock?", c:["Cooling","Melting","Lithification","Erosion"], a:2 },
+    { q:"What type of rock is marble?", c:["Igneous","Sedimentary","Metamorphic","Volcanic"], a:2 },
+    { q:"What type of rock is basalt?", c:["Sedimentary","Metamorphic","Igneous","Fossil"], a:2 },
+    { q:"Which statement best describes the rock cycle?", c:["Rocks never change","Rocks form only once","Rocks change through different processes","All rocks become igneous"], a:2 },
+
+    // 31–40 Atmosphere & Weather
+    { q:"Which layer of the atmosphere contains most weather?", c:["Stratosphere","Mesosphere","Troposphere","Thermosphere"], a:2 },
+    { q:"Which atmospheric layer contains the ozone layer?", c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"], a:1 },
+    { q:"Which layer of the atmosphere burns most meteors?", c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"], a:2 },
+    { q:"Which atmospheric layer reflects radio waves?", c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"], a:3 },
+    { q:"Which gas is most abundant in Earth’s atmosphere?", c:["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"], a:2 },
+    { q:"Which gas contributes most to the greenhouse effect?", c:["Oxygen","Nitrogen","Carbon dioxide","Argon"], a:2 },
+    { q:"What causes wind to blow?", c:["Earth’s rotation","Differences in air pressure","Gravity","Tides"], a:1 },
+    { q:"Which instrument measures air pressure?", c:["Thermometer","Barometer","Anemometer","Hygrometer"], a:1 },
+    { q:"Which instrument measures wind speed?", c:["Thermometer","Barometer","Anemometer","Hygrometer"], a:2 },
+    { q:"What is the main difference between weather and climate?", c:["Weather is long-term","Climate is short-term","Weather is short-term, climate is long-term","They are the same"], a:2 },
+
+    // 41–50 Climate, Oceans & Winds
+    { q:"Which factor most strongly affects climate?", c:["Time of day","Latitude","Moon phase","Cloud cover"], a:1 },
+    { q:"Why do coastal areas usually have milder climates?", c:["Higher altitude","Ocean moderates temperature","More rainfall","Stronger winds"], a:1 },
+    { q:"What primarily drives ocean surface currents?", c:["Earth’s tilt","Wind","Moon phases","Plate tectonics"], a:1 },
+    { q:"What effect does a warm ocean current have on nearby land?", c:["Cooler climate","Drier climate","Warmer climate","No effect"], a:2 },
+    { q:"What effect does a cold ocean current have on nearby land?", c:["Warmer climate","Wetter climate","Cooler climate","No effect"], a:2 },
+    { q:"Which global wind belt is found near the equator?", c:["Westerlies","Polar easterlies","Trade winds","Jet stream"], a:2 },
+    { q:"What causes sea breeze during the day?", c:["Land heats faster than sea","Sea heats faster than land","Earth’s rotation","Ocean currents"], a:0 },
+    { q:"What causes land breeze at night?", c:["Land cools faster than sea","Sea cools faster than land","Moon gravity","Cloud cover"], a:0 },
+    { q:"Which instrument measures humidity?", c:["Thermometer","Barometer","Anemometer","Hygrometer"], a:3 },
+    { q:"Which instrument measures temperature?", c:["Thermometer","Barometer","Hygrometer","Anemometer"], a:0 },
+
+    // 51–60 Earth–Moon–Sun System
+    { q:"What is Earth’s natural satellite?", c:["Mars","Sun","Moon","Venus"], a:2 },
+    { q:"What causes ocean tides on Earth?", c:["Wind","Earth’s rotation","Moon’s gravity","Sunlight"], a:2 },
+    { q:"Which phase of the Moon is fully illuminated?", c:["New Moon","First Quarter","Full Moon","Last Quarter"], a:2 },
+    { q:"Which eclipse occurs when the Moon blocks the Sun?", c:["Lunar","Solar","Partial","Annular"], a:1 },
+    { q:"Which eclipse occurs when Earth blocks sunlight from reaching the Moon?", c:["Solar","Lunar","Total","Partial"], a:1 },
+    { q:"Why do we always see the same side of the Moon from Earth?", c:["The Moon does not rotate","Synchronous rotation","Earth’s shadow","Slow revolution"], a:1 },
+    { q:"What is the average length of one lunar cycle?", c:["7 days","14 days","29.5 days","365 days"], a:2 },
+    { q:"What phase comes after the New Moon?", c:["Full Moon","First Quarter","Waxing Crescent","Waning Crescent"], a:2 },
+    { q:"During which phase are spring tides strongest?", c:["First Quarter","Full Moon","Last Quarter","Half Moon"], a:1 },
+    { q:"Which force keeps the Moon in orbit around Earth?", c:["Magnetism","Gravity","Solar wind","Pressure"], a:1 },
+
+    // 61–70 Solar System & Planets
+    { q:"Which planet is closest to the Sun?", c:["Venus","Earth","Mercury","Mars"], a:2 },
+    { q:"Which planet is known as Earth’s twin because of similar size?", c:["Mars","Venus","Mercury","Neptune"], a:1 },
+    { q:"Which planet is known as the Red Planet?", c:["Venus","Mars","Jupiter","Mercury"], a:1 },
+    { q:"Which planet has the most moons?", c:["Earth","Mars","Jupiter","Mercury"], a:2 },
+    { q:"Which planet has a prominent ring system?", c:["Earth","Mars","Saturn","Venus"], a:2 },
+    { q:"Which planet rotates on its side?", c:["Saturn","Uranus","Neptune","Jupiter"], a:1 },
+    { q:"Which planet has the shortest orbital period?", c:["Earth","Mars","Mercury","Venus"], a:2 },
+    { q:"Which planet has a thick carbon dioxide atmosphere causing extreme heat?", c:["Mercury","Venus","Mars","Earth"], a:1 },
+    { q:"Which group of planets are mostly gas giants?", c:["Inner planets","Terrestrial planets","Outer planets","Dwarf planets"], a:2 },
+    { q:"What keeps planets in their orbits around the Sun?", c:["Magnetism","Gravity","Solar wind","Pressure"], a:1 },
+
+    // 71–80 Stars & Galaxies
+    { q:"Which star is closest to Earth?", c:["Sirius","Polaris","The Sun","Alpha Centauri"], a:2 },
+    { q:"What is a star mainly made of?", c:["Rock and metal","Liquid lava","Hydrogen and helium","Ice"], a:2 },
+    { q:"What process produces energy in stars?", c:["Combustion","Photosynthesis","Nuclear fusion","Fission"], a:2 },
+    { q:"What determines a star’s color?", c:["Size","Distance","Temperature","Age"], a:2 },
+    { q:"Which type of star is the Sun?", c:["Red giant","White dwarf","Main-sequence star","Neutron star"], a:2 },
+    { q:"What happens when a massive star runs out of fuel?", c:["It becomes a planet","It explodes as a supernova","It cools into ice","It stops existing"], a:1 },
+    { q:"What is a galaxy?", c:["A group of planets","A group of stars, gas, and dust","A single star system","A nebula"], a:1 },
+    { q:"What galaxy do we live in?", c:["Andromeda","Milky Way","Whirlpool","Sombrero"], a:1 },
+    { q:"Which type of galaxy is the Milky Way?", c:["Elliptical","Irregular","Spiral","Ring"], a:2 },
+    { q:"What is a nebula?", c:["A dying star","A cloud of gas and dust","A black hole","A comet"], a:1 },
+
+    // 81–90 Space Exploration & Tools
+    { q:"What tool is used to observe distant objects in space?", c:["Microscope","Telescope","Periscope","Radar"], a:1 },
+    { q:"What type of telescope uses mirrors?", c:["Refracting","Reflecting","Radio","Infrared"], a:1 },
+    { q:"What type of telescope detects radio waves?", c:["Optical","X-ray","Radio","Infrared"], a:2 },
+    { q:"Why are space telescopes placed above Earth’s atmosphere?", c:["To avoid gravity","To avoid air distortion","To get closer to stars","To save fuel"], a:1 },
+    { q:"Which spacecraft carried humans to the Moon?", c:["Voyager","Apollo","Hubble","Pioneer"], a:1 },
+    { q:"What was the first artificial satellite launched into space?", c:["Apollo 11","Sputnik 1","Voyager 1","Hubble"], a:1 },
+    { q:"Which space probe has traveled farthest from Earth?", c:["Apollo 11","Voyager 1","Hubble","Sputnik"], a:1 },
+    { q:"What is the main purpose of satellites?", c:["Weather monitoring and communication","Mining asteroids","Colonizing planets","Creating gravity"], a:0 },
+    { q:"Which device is used to study planets by landing on them?", c:["Telescope","Satellite","Rover","Space shuttle"], a:2 },
+    { q:"What is the International Space Station mainly used for?", c:["Tourism","Scientific research","Military defense","Mining"], a:1 },
+
+    // 91–100 Earth History & Dating (Hard)
+    { q:"What method is used to determine the absolute age of rocks?", c:["Relative dating","Stratigraphy","Radiometric dating","Fossil correlation"], a:2 },
+    { q:"Which principle states that younger rock layers are found above older ones?", c:["Uniformitarianism","Superposition","Cross-cutting","Original horizontality"], a:1 },
+    { q:"Which principle explains that present processes shaped Earth in the past?", c:["Catastrophism","Uniformitarianism","Volcanism","Subduction"], a:1 },
+    { q:"What is the study of Earth’s history called?", c:["Meteorology","Astronomy","Geology","Ecology"], a:2 },
+    { q:"Which era are we currently in?", c:["Mesozoic","Paleozoic","Cenozoic","Precambrian"], a:2 },
+    { q:"Which eon covers most of Earth’s history?", c:["Cenozoic","Phanerozoic","Precambrian","Mesozoic"], a:2 },
+    { q:"What type of fossil shows the activity of an organism?", c:["Mold fossil","Cast fossil","Trace fossil","Index fossil"], a:2 },
+    { q:"Which fossil is most useful for dating rock layers?", c:["Trace fossil","Petrified fossil","Index fossil","Mold fossil"], a:2 },
+    { q:"Which event marks the boundary between the Mesozoic and Cenozoic eras?", c:["Ice age","Supervolcano eruption","Mass extinction of dinosaurs","Formation of Earth"], a:2 },
+    { q:"Why is radiometric dating reliable?", c:["Uses fossils only","Based on radioactive decay rates","Depends on rock color","Uses temperature"], a:1 }
 
   ];
 
-  return q[i] || {
-    q: `Question ${i + 1}: Earth & Space Science concept check`,
-    c: ["Correct answer", "Incorrect option", "Incorrect option", "Incorrect option"],
-    a: 0
-  };
+  return q[i];
 });
-
 /* ===================== QUIZ LOGIC ===================== */
 function loadQuestion() {
   document.getElementById("feedback").innerHTML = "";
