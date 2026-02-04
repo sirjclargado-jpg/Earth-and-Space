@@ -15,7 +15,7 @@ body {
     background: #112b45;
     padding: 25px;
     border-radius: 10px;
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
 }
 button {
@@ -24,17 +24,17 @@ button {
     padding: 12px;
     color: white;
     font-size: 16px;
-    margin: 6px;
+    margin: 6px 0;
     border-radius: 5px;
     cursor: pointer;
-    width: 85%;
+    width: 95%;
 }
 button:hover {
     background: #63b3ff;
 }
 .correct { color: #7CFC00; font-weight: bold; }
 .wrong { color: #ff6b6b; font-weight: bold; }
-.answer { margin-top: 10px; font-style: italic; }
+.answer { margin-top: 8px; font-style: italic; }
 </style>
 </head>
 
@@ -42,100 +42,160 @@ button:hover {
 
 <h1>🌍 Earth & Space Science Quiz</h1>
 
-<div class="quiz-box">
+<div class="quiz-box" id="quizBox">
     <div id="progress"></div>
     <h2 id="question"></h2>
     <div id="choices"></div>
-    <p id="feedback"></p>
+    <div id="feedback"></div>
 </div>
 
 <script>
 let index = 0;
 let score = 0;
+let responses = [];
 
-// ================== 100 UNIQUE QUESTIONS ==================
+// ================== 100 QUESTION BANK ==================
 const quiz = [
 
-/* 🟢 EASY (35 items) */
-{q:"What layer of the Earth do we live on?",c:["Mantle","Core","Crust","Inner core"],a:2},
-{q:"What motion of Earth causes day and night?",c:["Revolution","Rotation","Tilt","Precession"],a:1},
+/* 1–50 */
+{q:"What layer of the Earth do humans live on?",c:["Mantle","Core","Crust","Inner core"],a:2},
+{q:"What motion of the Earth causes day and night?",c:["Revolution","Rotation","Tilt","Precession"],a:1},
 {q:"Which planet is closest to the Sun?",c:["Venus","Earth","Mercury","Mars"],a:2},
-{q:"What force pulls objects toward Earth?",c:["Magnetism","Gravity","Energy","Friction"],a:1},
-{q:"Which object is a natural satellite of Earth?",c:["Sun","Mars","Moon","Asteroid"],a:2},
-{q:"What do we call molten rock beneath Earth’s surface?",c:["Lava","Magma","Basalt","Granite"],a:1},
+{q:"What force pulls objects toward Earth?",c:["Magnetism","Gravity","Energy","Pressure"],a:1},
+{q:"Which object is Earth’s natural satellite?",c:["Sun","Mars","Moon","Asteroid"],a:2},
+{q:"What do we call molten rock beneath Earth’s surface?",c:["Lava","Magma","Granite","Basalt"],a:1},
 {q:"Which planet is known as the Red Planet?",c:["Venus","Mars","Jupiter","Mercury"],a:1},
-{q:"What gas is most abundant in Earth’s atmosphere?",c:["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],a:2},
-{q:"Which part of Earth is the hottest?",c:["Crust","Mantle","Outer core","Inner core"],a:3},
-{q:"What causes the seasons on Earth?",c:["Distance from Sun","Axial tilt","Moon phases","Rotation"],a:1},
+{q:"Which gas is most abundant in Earth’s atmosphere?",c:["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],a:2},
+{q:"What causes the seasons on Earth?",c:["Distance from the Sun","Earth’s axial tilt","Moon phases","Rotation"],a:1},
+{q:"Which layer of Earth is the hottest?",c:["Crust","Mantle","Outer core","Inner core"],a:3},
 
-/* 🟡 AVERAGE (35 items) */
-{q:"Which plate boundary forms mountain ranges?",c:["Transform","Divergent","Convergent","Passive"],a:2},
-{q:"What causes earthquakes?",c:["Volcanoes","Plate movement","Weather","Ocean waves"],a:1},
-{q:"Which rock forms from compacted sediments?",c:["Igneous","Metamorphic","Sedimentary","Basalt"],a:2},
+{q:"Which plate boundary forms when two plates collide?",c:["Transform","Divergent","Convergent","Passive"],a:2},
+{q:"What causes earthquakes?",c:["Ocean waves","Weather","Plate movement","Volcanic ash"],a:2},
+{q:"Which rock type forms from compacted sediments?",c:["Igneous","Metamorphic","Sedimentary","Magma"],a:2},
 {q:"Which atmospheric layer contains the ozone layer?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:1},
-{q:"What causes ocean tides?",c:["Wind","Moon’s gravity","Earth’s rotation","Sunlight"],a:1},
-{q:"Which process changes sediment into sedimentary rock?",c:["Cooling","Melting","Compaction and cementation","Metamorphism"],a:2},
-{q:"What type of plate boundary creates rift valleys?",c:["Transform","Convergent","Divergent","Subduction"],a:2},
-{q:"Why do planets stay in orbit around the Sun?",c:["Magnetism","Gravity","Rotation","Pressure"],a:1},
-{q:"Which instrument measures earthquakes?",c:["Barometer","Thermometer","Seismograph","Hygrometer"],a:2},
-{q:"What phase of the Moon occurs when it is fully lit?",c:["New Moon","First Quarter","Full Moon","Last Quarter"],a:2},
+{q:"What causes ocean tides?",c:["Wind","Earth’s rotation","Moon’s gravity","Sunlight"],a:2},
+{q:"Which process turns sediment into rock?",c:["Melting","Cooling","Compaction and cementation","Metamorphism"],a:2},
+{q:"What type of boundary forms rift valleys?",c:["Transform","Convergent","Divergent","Subduction"],a:2},
+{q:"Why do planets remain in orbit around the Sun?",c:["Magnetism","Gravity","Solar wind","Pressure"],a:1},
+{q:"Which instrument measures earthquakes?",c:["Thermometer","Barometer","Seismograph","Hygrometer"],a:2},
+{q:"What phase of the Moon is fully illuminated?",c:["New Moon","First Quarter","Full Moon","Last Quarter"],a:2},
 
-/* 🔴 HARD (30 items) */
-{q:"What drives convection currents in the mantle?",c:["Solar energy","Heat from Earth’s core","Magnetism","Rotation"],a:1},
-{q:"Why does Earth experience seasons?",c:["Elliptical orbit","Axial tilt","Distance from Sun","Rotation speed"],a:1},
-{q:"Which law explains planetary orbits?",c:["Newton’s Law","Kepler’s Law","Boyle’s Law","Ohm’s Law"],a:1},
-{q:"Which atmospheric layer is ionized and reflects radio waves?",c:["Stratosphere","Mesosphere","Thermosphere","Troposphere"],a:2},
+{q:"What drives convection currents in the mantle?",c:["Solar energy","Heat from Earth’s core","Ocean currents","Atmospheric pressure"],a:1},
+{q:"Why does Earth experience seasons?",c:["Elliptical orbit","Axial tilt","Solar output","Moon distance"],a:1},
+{q:"Which law explains planetary motion?",c:["Newton’s Law","Kepler’s Laws","Boyle’s Law","Ohm’s Law"],a:1},
+{q:"Which atmospheric layer reflects radio waves?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:3},
 {q:"Why do we always see the same side of the Moon?",c:["No rotation","Synchronous rotation","Earth’s shadow","Slow orbit"],a:1},
-{q:"Which process forms metamorphic rock?",c:["Cooling magma","Weathering","Heat and pressure","Erosion"],a:2},
-{q:"What happens at a subduction zone?",c:["Plates slide","Plates separate","One plate sinks","Plates stop"],a:2},
-{q:"Why is Pluto classified as a dwarf planet?",c:["Too small","No atmosphere","Has not cleared orbit","Too far"],a:2},
-{q:"What causes auroras?",c:["Solar wind and magnetic field","Clouds","Moonlight","Ozone"],a:0},
-{q:"Which factor affects gravity on a planet?",c:["Color","Mass","Temperature","Distance from Moon"],a:1}
+{q:"Which process forms metamorphic rock?",c:["Cooling","Weathering","Heat and pressure","Deposition"],a:2},
+{q:"What happens at a subduction zone?",c:["Plates separate","Plates slide","One plate sinks","Movement stops"],a:2},
+{q:"Why is Pluto classified as a dwarf planet?",c:["No atmosphere","Too far","Has not cleared its orbit","No moons"],a:2},
+{q:"What causes auroras?",c:["Volcanoes","Solar wind & magnetic field","Moonlight","Ozone"],a:1},
+{q:"Which factor most affects gravity?",c:["Color","Temperature","Mass","Rotation"],a:2},
+
+/* 51–100 */
+{q:"Which planet is known as Earth’s twin because of similar size?",c:["Mars","Venus","Mercury","Neptune"],a:1},
+{q:"What do we call solid rock fragments produced by weathering?",c:["Magma","Sediments","Lava","Minerals"],a:1},
+{q:"Which celestial body controls the length of a day on Earth?",c:["Moon","Sun","Earth","Mars"],a:2},
+{q:"Which layer of Earth is made of solid rock?",c:["Outer core","Inner core","Crust","Asthenosphere"],a:2},
+{q:"What gas do plants need for photosynthesis?",c:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],a:2},
+{q:"Which instrument measures wind speed?",c:["Barometer","Thermometer","Anemometer","Hygrometer"],a:2},
+{q:"What type of rock is basalt?",c:["Sedimentary","Metamorphic","Igneous","Fossil"],a:2},
+{q:"Which part of Earth contains liquid iron and nickel?",c:["Crust","Mantle","Outer core","Inner core"],a:2},
+{q:"What causes shadows to change length during the day?",c:["Earth’s tilt","Earth’s rotation","Earth’s revolution","Moon phases"],a:1},
+{q:"Which object travels around a planet?",c:["Asteroid","Star","Satellite","Galaxy"],a:2},
+
+{q:"What type of eclipse occurs when Earth blocks sunlight from the Moon?",c:["Solar","Lunar","Partial","Annular"],a:1},
+{q:"Which planet has the shortest year?",c:["Earth","Mars","Mercury","Venus"],a:2},
+{q:"Which process breaks rocks into smaller pieces?",c:["Deposition","Weathering","Lithification","Metamorphism"],a:1},
+{q:"What layer of the atmosphere do airplanes usually fly in?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:1},
+{q:"Which planet has the most moons?",c:["Earth","Mars","Jupiter","Mercury"],a:2},
+{q:"Which process moves weathered material?",c:["Weathering","Deposition","Erosion","Lithification"],a:2},
+{q:"What type of stress pushes rocks together?",c:["Tension","Compression","Shearing","Friction"],a:1},
+{q:"Which layer of the Sun produces visible light?",c:["Core","Radiative zone","Photosphere","Corona"],a:2},
+{q:"What evidence suggests continents were once joined?",c:["Ocean currents","Matching fossils","Moon phases","Wind patterns"],a:1},
+{q:"Which gas contributes to the greenhouse effect?",c:["Nitrogen","Oxygen","Carbon dioxide","Argon"],a:2},
+
+{q:"What type of boundary causes strong earthquakes but no volcanoes?",c:["Convergent","Divergent","Transform","Passive"],a:2},
+{q:"Which planet rotates on its side?",c:["Jupiter","Saturn","Uranus","Neptune"],a:2},
+{q:"What happens during deposition?",c:["Rocks break down","Sediments are dropped","Rocks melt","Plates collide"],a:1},
+{q:"Which factor affects tectonic plate movement?",c:["Color","Mantle convection","Moon phases","Solar radiation"],a:1},
+{q:"Why do volcanoes form at convergent boundaries?",c:["Plates slide","Subducting plate melts","Plates stop","Earth cools"],a:1},
+{q:"Which atmospheric layer has the highest temperature?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:3},
+{q:"Which moon phase follows the New Moon?",c:["Full Moon","First Quarter","Waxing Crescent","Waning Gibbous"],a:2},
+{q:"Which planet has extreme heat due to thick CO₂ atmosphere?",c:["Mercury","Venus","Mars","Earth"],a:1},
+{q:"What type of rock forms from lava at Earth’s surface?",c:["Intrusive","Extrusive","Sedimentary","Metamorphic"],a:1},
+{q:"Which principle explains slow landscape change over time?",c:["Catastrophism","Uniformitarianism","Volcanism","Collision"],a:1}
 
 ];
 
-// Ensure exactly 100 questions
-// (Add more UNIQUE items here if needed)
-
+// ================= QUIZ LOGIC =================
 function loadQuestion() {
     document.getElementById("feedback").innerHTML = "";
     document.getElementById("progress").innerHTML =
-        `Question ${index + 1} / 100 | Score: ${score}`;
+        `Question ${index + 1} / ${quiz.length} | Score: ${score}`;
+
     document.getElementById("question").innerText = quiz[index].q;
 
     let html = "";
     quiz[index].c.forEach((choice, i) => {
-        html += `<button onclick="checkAnswer(${i})">${choice}</button><br>`;
+        html += `<button onclick="checkAnswer(${i})">${choice}</button>`;
     });
     document.getElementById("choices").innerHTML = html;
 }
 
 function checkAnswer(choice) {
-    let correct = quiz[index].a;
-    let feedback = "";
+    const correct = quiz[index].a;
+    const isCorrect = choice === correct;
 
-    if (choice === correct) {
-        score++;
-        feedback += `<span class="correct">Correct!</span><br>`;
-    } else {
-        feedback += `<span class="wrong">Wrong!</span><br>`;
-    }
+    responses.push({
+        question: quiz[index].q,
+        selected: quiz[index].c[choice],
+        correct: quiz[index].c[correct],
+        result: isCorrect ? "Correct" : "Wrong"
+    });
 
-    feedback += `<div class="answer">
-    Correct Answer: <strong>${quiz[index].c[correct]}</strong>
-    </div>`;
+    if (isCorrect) score++;
 
-    document.getElementById("feedback").innerHTML = feedback;
+    document.getElementById("feedback").innerHTML = `
+        <div class="${isCorrect ? 'correct' : 'wrong'}">
+            ${isCorrect ? 'Correct!' : 'Wrong!'}
+        </div>
+        <div class="answer">
+            Correct Answer: <strong>${quiz[index].c[correct]}</strong>
+        </div>
+    `;
 
     index++;
     if (index < quiz.length) {
-        setTimeout(loadQuestion, 1800);
+        setTimeout(loadQuestion, 1500);
     } else {
-        document.querySelector(".quiz-box").innerHTML =
-            `<h2>🎉 Quiz Complete!</h2>
-             <p>Final Score: ${score} / 100</p>
-             <p>Percentage: ${score}%</p>`;
+        finishQuiz();
     }
+}
+
+function finishQuiz() {
+    const percent = Math.round((score / quiz.length) * 100);
+    document.getElementById("quizBox").innerHTML = `
+        <h2>🎉 Quiz Completed</h2>
+        <p><strong>Score:</strong> ${score} / ${quiz.length}</p>
+        <p><strong>Percentage:</strong> ${percent}%</p>
+        <button onclick="downloadCSV()">📥 Download Results</button>
+    `;
+}
+
+function downloadCSV() {
+    let csv = "Question,Your Answer,Correct Answer,Result\n";
+    responses.forEach(r => {
+        csv += `"${r.question}","${r.selected}","${r.correct}","${r.result}"\n`;
+    });
+    csv += `\nFinal Score,${score}/${quiz.length}\nPercentage,${Math.round((score/quiz.length)*100)}%\n`;
+
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Earth_Space_Science_Quiz_Result.csv";
+    a.click();
+    URL.revokeObjectURL(url);
 }
 
 loadQuestion();
