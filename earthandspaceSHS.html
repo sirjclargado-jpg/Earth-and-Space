@@ -52,15 +52,117 @@ let score = 0;
 
 /* ===================== EXACTLY 100 QUESTIONS ===================== */
 const quiz = Array.from({ length: 100 }, (_, i) => {
-  const n = i + 1;
-  return {
-    q: `Question ${n}: Earth & Space Science concept check`,
-    c: [
-      "Correct answer",
-      "Incorrect option",
-      "Incorrect option",
-      "Incorrect option"
-    ],
+  const q = [
+
+    // 1–10 Earth Structure & Motions
+    {
+      q: "What layer of the Earth do humans live on?",
+      c: ["Mantle", "Core", "Crust", "Inner core"],
+      a: 2
+    },
+    {
+      q: "Which motion of the Earth causes day and night?",
+      c: ["Revolution", "Rotation", "Axial tilt", "Precession"],
+      a: 1
+    },
+    {
+      q: "What causes the seasons on Earth?",
+      c: ["Distance from the Sun", "Earth’s axial tilt", "Moon phases", "Earth’s rotation"],
+      a: 1
+    },
+    {
+      q: "Which part of the Earth is the hottest?",
+      c: ["Crust", "Mantle", "Outer core", "Inner core"],
+      a: 3
+    },
+    {
+      q: "Which layer of the Earth generates the magnetic field?",
+      c: ["Crust", "Mantle", "Outer core", "Inner core"],
+      a: 2
+    },
+    {
+      q: "What shape best describes the Earth?",
+      c: ["Perfect sphere", "Flat disk", "Oblate spheroid", "Cube"],
+      a: 2
+    },
+    {
+      q: "How long does Earth take to revolve around the Sun?",
+      c: ["24 hours", "30 days", "365 days", "12 hours"],
+      a: 2
+    },
+    {
+      q: "What force keeps objects on Earth’s surface?",
+      c: ["Magnetism", "Gravity", "Pressure", "Energy"],
+      a: 1
+    },
+    {
+      q: "What causes the Coriolis effect?",
+      c: ["Gravity", "Earth’s rotation", "Earth’s revolution", "Axial tilt"],
+      a: 1
+    },
+    {
+      q: "Which motion of Earth causes a year?",
+      c: ["Rotation", "Revolution", "Axial tilt", "Orbit"],
+      a: 1
+    },
+
+    // 11–20 Plate Tectonics & Earthquakes
+    {
+      q: "What causes tectonic plates to move?",
+      c: ["Wind", "Mantle convection currents", "Earth’s rotation", "Moon’s gravity"],
+      a: 1
+    },
+    {
+      q: "Which type of plate boundary occurs when two plates collide?",
+      c: ["Transform", "Divergent", "Convergent", "Passive"],
+      a: 2
+    },
+    {
+      q: "Which plate boundary forms rift valleys?",
+      c: ["Transform", "Convergent", "Divergent", "Subduction"],
+      a: 2
+    },
+    {
+      q: "Which plate boundary causes earthquakes but usually no volcanoes?",
+      c: ["Convergent", "Divergent", "Transform", "Passive"],
+      a: 2
+    },
+    {
+      q: "What is the main cause of earthquakes?",
+      c: ["Volcanic eruptions", "Weather changes", "Sudden plate movement", "Ocean waves"],
+      a: 2
+    },
+    {
+      q: "Which instrument is used to measure earthquakes?",
+      c: ["Thermometer", "Barometer", "Seismograph", "Hygrometer"],
+      a: 2
+    },
+    {
+      q: "What happens at a subduction zone?",
+      c: ["Plates move apart", "Plates slide past each other", "One plate sinks beneath another", "Plates stop moving"],
+      a: 2
+    },
+    {
+      q: "Which type of seismic wave causes the most damage at Earth’s surface?",
+      c: ["P-waves", "S-waves", "Surface waves", "Body waves"],
+      a: 2
+    },
+    {
+      q: "Which evidence supports the theory of plate tectonics?",
+      c: ["Cloud patterns", "Matching fossils on different continents", "Moon phases", "Wind direction"],
+      a: 1
+    },
+    {
+      q: "Which layer of Earth do tectonic plates belong to?",
+      c: ["Asthenosphere", "Mantle", "Lithosphere", "Outer core"],
+      a: 2
+    }
+
+  ];
+
+  return q[i] || {
+    q: `Question ${i + 1}: Earth & Space Science concept check`,
+    c: ["Correct answer", "Incorrect option", "Incorrect option", "Incorrect option"],
     a: 0
   };
 });
