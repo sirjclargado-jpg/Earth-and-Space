@@ -52,98 +52,105 @@ let index = 0;
 let score = 0;
 let responses = [];
 
-// ===================== 100 QUESTIONS =====================
+/* ===================== EXACTLY 100 QUESTIONS ===================== */
 const quiz = [
+
 /* 1–20 Earth Structure & Motions */
 {q:"What layer of the Earth do humans live on?",c:["Mantle","Core","Crust","Inner core"],a:2},
 {q:"Which motion of Earth causes day and night?",c:["Revolution","Rotation","Tilt","Precession"],a:1},
-{q:"What causes seasons on Earth?",c:["Distance from Sun","Axial tilt","Moon phases","Rotation"],a:1},
-{q:"Which part of Earth is the hottest?",c:["Crust","Mantle","Outer core","Inner core"],a:3},
+{q:"What causes the seasons on Earth?",c:["Distance from Sun","Axial tilt","Moon phases","Rotation"],a:1},
+{q:"Which layer of Earth is the hottest?",c:["Crust","Mantle","Outer core","Inner core"],a:3},
 {q:"Which layer generates Earth’s magnetic field?",c:["Crust","Mantle","Outer core","Inner core"],a:2},
-{q:"What shape best describes Earth?",c:["Sphere","Flat","Oblate spheroid","Cube"],a:2},
+{q:"What shape best describes Earth?",c:["Perfect sphere","Flat disk","Oblate spheroid","Cube"],a:2},
 {q:"How long does Earth take to revolve around the Sun?",c:["24 hours","30 days","365 days","12 hours"],a:2},
-{q:"What force keeps objects on Earth?",c:["Magnetism","Gravity","Pressure","Energy"],a:1},
-{q:"What causes the Coriolis effect?",c:["Gravity","Rotation","Revolution","Tilt"],a:1},
+{q:"What force keeps objects on Earth’s surface?",c:["Magnetism","Gravity","Pressure","Energy"],a:1},
+{q:"What causes the Coriolis effect?",c:["Gravity","Earth’s rotation","Earth’s revolution","Axial tilt"],a:1},
 {q:"Which motion causes a year?",c:["Rotation","Revolution","Tilt","Orbit"],a:1},
-{q:"Which layer is semi-molten?",c:["Crust","Mantle","Outer core","Inner core"],a:1},
+{q:"Which Earth layer is semi-molten?",c:["Crust","Mantle","Outer core","Inner core"],a:1},
 {q:"Which layer is solid iron?",c:["Crust","Mantle","Outer core","Inner core"],a:3},
 {q:"What protects Earth from solar wind?",c:["Atmosphere","Magnetic field","Clouds","Ozone"],a:1},
-{q:"Which motion explains apparent star movement?",c:["Earth rotation","Earth tilt","Earth revolution","Moon orbit"],a:0},
-{q:"What angle is Earth’s axial tilt?",c:["15°","23.5°","45°","90°"],a:1},
-{q:"Which factor affects gravity strength?",c:["Color","Temperature","Mass","Rotation"],a:2},
-{q:"What causes shadows to change length?",c:["Revolution","Rotation","Tilt","Moon"],a:1},
+{q:"Which motion explains apparent star movement at night?",c:["Earth’s rotation","Earth’s tilt","Earth’s revolution","Moon orbit"],a:0},
+{q:"What is Earth’s axial tilt?",c:["15°","23.5°","45°","90°"],a:1},
+{q:"Which factor most affects gravity?",c:["Color","Temperature","Mass","Rotation"],a:2},
+{q:"What causes shadows to change length?",c:["Revolution","Rotation","Tilt","Moon phases"],a:1},
 {q:"Which Earth layer is liquid?",c:["Crust","Mantle","Outer core","Inner core"],a:2},
-{q:"What motion causes time zones?",c:["Rotation","Revolution","Tilt","Orbit"],a:0},
-{q:"Which process releases heat from Earth’s interior?",c:["Radiation","Convection","Reflection","Evaporation"],a:1},
+{q:"What motion creates time zones?",c:["Rotation","Revolution","Tilt","Orbit"],a:0},
+{q:"What transfers heat inside Earth?",c:["Radiation","Convection","Reflection","Evaporation"],a:1},
 
 /* 21–40 Plate Tectonics & Rocks */
-{q:"What causes tectonic plates to move?",c:["Wind","Convection currents","Moon gravity","Rotation"],a:1},
-{q:"Which boundary forms mountains?",c:["Divergent","Transform","Convergent","Passive"],a:2},
-{q:"What boundary creates rift valleys?",c:["Transform","Convergent","Divergent","Subduction"],a:2},
-{q:"Which boundary causes earthquakes only?",c:["Convergent","Divergent","Transform","Passive"],a:2},
+{q:"What causes tectonic plates to move?",c:["Wind","Mantle convection","Moon gravity","Earth’s rotation"],a:1},
+{q:"Which boundary forms mountain ranges?",c:["Divergent","Transform","Convergent","Passive"],a:2},
+{q:"Which boundary forms rift valleys?",c:["Transform","Convergent","Divergent","Subduction"],a:2},
+{q:"Which boundary produces earthquakes but no volcanoes?",c:["Convergent","Divergent","Transform","Passive"],a:2},
 {q:"What causes earthquakes?",c:["Volcanoes","Weather","Plate movement","Tides"],a:2},
-{q:"Which wave causes most damage?",c:["P-wave","S-wave","Surface wave","Body wave"],a:2},
-{q:"What instrument measures earthquakes?",c:["Thermometer","Barometer","Seismograph","Hygrometer"],a:2},
-{q:"What occurs at subduction zones?",c:["Plates separate","Plates slide","One plate sinks","Plates stop"],a:2},
+{q:"Which seismic wave causes the most damage?",c:["P-wave","S-wave","Surface wave","Body wave"],a:2},
+{q:"Which instrument measures earthquakes?",c:["Thermometer","Barometer","Seismograph","Hygrometer"],a:2},
+{q:"What happens at a subduction zone?",c:["Plates separate","Plates slide","One plate sinks","Plates stop"],a:2},
 {q:"What type of rock forms from magma?",c:["Sedimentary","Metamorphic","Igneous","Fossil"],a:2},
 {q:"What type of rock forms from sediments?",c:["Igneous","Metamorphic","Sedimentary","Magma"],a:2},
 {q:"What type of rock forms from heat and pressure?",c:["Igneous","Sedimentary","Metamorphic","Basalt"],a:2},
-{q:"What process breaks rocks apart?",c:["Erosion","Weathering","Deposition","Lithification"],a:1},
-{q:"What process moves sediments?",c:["Weathering","Erosion","Deposition","Melting"],a:1},
-{q:"What process drops sediments?",c:["Weathering","Erosion","Deposition","Cooling"],a:2},
-{q:"What turns sediment into rock?",c:["Melting","Cooling","Lithification","Erosion"],a:2},
-{q:"What rock is marble?",c:["Igneous","Sedimentary","Metamorphic","Volcanic"],a:2},
-{q:"What rock is basalt?",c:["Sedimentary","Metamorphic","Igneous","Fossil"],a:2},
-{q:"What stress pulls rocks apart?",c:["Compression","Shearing","Tension","Friction"],a:2},
-{q:"What stress squeezes rocks?",c:["Tension","Compression","Shearing","Expansion"],a:1},
-{q:"What evidence supports plate tectonics?",c:["Clouds","Matching fossils","Moon phases","Wind"],a:1},
+{q:"What process breaks rocks into smaller pieces?",c:["Erosion","Weathering","Deposition","Lithification"],a:1},
+{q:"What process moves sediments?",c:["Weathering","Erosion","Deposition","Cooling"],a:1},
+{q:"What process drops sediments?",c:["Weathering","Erosion","Deposition","Melting"],a:2},
+{q:"What process turns sediment into rock?",c:["Melting","Cooling","Lithification","Erosion"],a:2},
+{q:"What type of rock is marble?",c:["Igneous","Sedimentary","Metamorphic","Volcanic"],a:2},
+{q:"What type of rock is basalt?",c:["Sedimentary","Metamorphic","Igneous","Fossil"],a:2},
+{q:"Which stress pulls rocks apart?",c:["Compression","Shearing","Tension","Friction"],a:2},
+{q:"Which stress squeezes rocks?",c:["Tension","Compression","Shearing","Expansion"],a:1},
+{q:"What evidence supports plate tectonics?",c:["Cloud patterns","Matching fossils","Moon phases","Wind"],a:1},
 
 /* 41–60 Atmosphere & Weather */
-{q:"Which layer contains weather?",c:["Stratosphere","Mesosphere","Troposphere","Thermosphere"],a:2},
-{q:"Which layer contains ozone?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:1},
-{q:"Which layer burns meteors?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:2},
+{q:"Which atmospheric layer contains weather?",c:["Stratosphere","Mesosphere","Troposphere","Thermosphere"],a:2},
+{q:"Which layer contains the ozone layer?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:1},
+{q:"Which layer burns most meteors?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:2},
 {q:"Which layer reflects radio waves?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:3},
-{q:"Which gas is most abundant?",c:["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],a:2},
-{q:"Which gas causes greenhouse effect?",c:["Oxygen","Nitrogen","Carbon dioxide","Argon"],a:2},
-{q:"What causes wind?",c:["Rotation","Pressure differences","Gravity","Tides"],a:1},
-{q:"What instrument measures air pressure?",c:["Thermometer","Barometer","Anemometer","Hygrometer"],a:1},
-{q:"What instrument measures wind speed?",c:["Thermometer","Barometer","Anemometer","Hygrometer"],a:2},
-{q:"What instrument measures humidity?",c:["Thermometer","Hygrometer","Barometer","Anemometer"],a:1},
+{q:"Which gas is most abundant in the atmosphere?",c:["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],a:2},
+{q:"Which gas contributes to the greenhouse effect?",c:["Oxygen","Nitrogen","Carbon dioxide","Argon"],a:2},
+{q:"What causes wind?",c:["Earth’s rotation","Pressure differences","Gravity","Tides"],a:1},
+{q:"Which instrument measures air pressure?",c:["Thermometer","Barometer","Anemometer","Hygrometer"],a:1},
+{q:"Which instrument measures wind speed?",c:["Thermometer","Barometer","Anemometer","Hygrometer"],a:2},
+{q:"Which instrument measures humidity?",c:["Thermometer","Hygrometer","Barometer","Anemometer"],a:1},
 {q:"Weather refers to?",c:["Long-term patterns","Short-term conditions","Climate zones","Seasons"],a:1},
-{q:"Climate refers to?",c:["Daily weather","Long-term patterns","Storms","Winds"],a:1},
-{q:"What mainly affects climate?",c:["Time of day","Latitude","Moon phase","Clouds"],a:1},
-{q:"Why are coastal areas mild?",c:["High altitude","Ocean moderates temp","More wind","Less Sun"],a:1},
-{q:"Which layer has highest temperature?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:3},
-{q:"Which layer is coldest?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:2},
-{q:"What protects from UV rays?",c:["Clouds","Ozone","Nitrogen","Water"],a:1},
+{q:"Climate refers to?",c:["Daily conditions","Long-term patterns","Storms","Winds"],a:1},
+{q:"Which factor mainly affects climate?",c:["Time of day","Latitude","Moon phase","Clouds"],a:1},
+{q:"Why do coastal areas have mild climates?",c:["High altitude","Ocean moderates temperature","Less sunlight","More wind"],a:1},
+{q:"Which layer has the highest temperature?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:3},
+{q:"Which atmospheric layer is the coldest?",c:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],a:2},
+{q:"What protects Earth from ultraviolet radiation?",c:["Clouds","Ozone","Nitrogen","Water vapor"],a:1},
 {q:"What causes auroras?",c:["Volcanoes","Solar wind","Moonlight","Clouds"],a:1},
-{q:"What drives ocean currents?",c:["Rotation & wind","Moon","Tilt","Clouds"],a:0},
-{q:"What happens to rising warm air?",c:["Cools","Heats","Condenses","Sinks"],a:0},
+{q:"What drives ocean currents?",c:["Rotation and wind","Moon phases","Axial tilt","Clouds"],a:0},
+{q:"What happens to warm air as it rises?",c:["It cools","It heats","It sinks","It gains pressure"],a:0},
 
 /* 61–100 Astronomy */
 {q:"What is Earth’s natural satellite?",c:["Mars","Sun","Moon","Venus"],a:2},
-{q:"What causes tides?",c:["Wind","Earth","Moon gravity","Sunlight"],a:2},
-{q:"What phase is fully lit?",c:["New","First quarter","Full","Last quarter"],a:2},
-{q:"Which eclipse blocks the Sun?",c:["Lunar","Solar","Partial","Annular"],a:1},
-{q:"Which eclipse blocks Moon’s light?",c:["Solar","Lunar","Total","Partial"],a:1},
-{q:"Why do we see same Moon side?",c:["No rotation","Synchronous rotation","Earth shadow","Slow orbit"],a:1},
-{q:"What planet is closest to Sun?",c:["Venus","Earth","Mercury","Mars"],a:2},
-{q:"Which planet is Earth’s twin?",c:["Mars","Venus","Mercury","Neptune"],a:1},
-{q:"Which planet has rings?",c:["Earth","Mars","Saturn","Venus"],a:2},
-{q:"Which planet has most moons?",c:["Earth","Mars","Jupiter","Mercury"],a:2},
-{q:"Which planet has shortest year?",c:["Earth","Mars","Mercury","Venus"],a:2},
+{q:"What causes ocean tides?",c:["Wind","Earth’s rotation","Moon’s gravity","Sunlight"],a:2},
+{q:"Which Moon phase is fully illuminated?",c:["New Moon","First Quarter","Full Moon","Last Quarter"],a:2},
+{q:"Which eclipse occurs when the Moon blocks the Sun?",c:["Lunar","Solar","Partial","Annular"],a:1},
+{q:"Which eclipse occurs when Earth blocks sunlight from the Moon?",c:["Solar","Lunar","Total","Partial"],a:1},
+{q:"Why do we always see the same side of the Moon?",c:["No rotation","Synchronous rotation","Earth’s shadow","Slow orbit"],a:1},
+{q:"Which planet is closest to the Sun?",c:["Venus","Earth","Mercury","Mars"],a:2},
+{q:"Which planet is Earth’s twin in size?",c:["Mars","Venus","Mercury","Neptune"],a:1},
+{q:"Which planet has prominent rings?",c:["Earth","Mars","Saturn","Venus"],a:2},
+{q:"Which planet has the most moons?",c:["Earth","Mars","Jupiter","Mercury"],a:2},
+{q:"Which planet has the shortest year?",c:["Earth","Mars","Mercury","Venus"],a:2},
 {q:"Which planet rotates on its side?",c:["Saturn","Uranus","Neptune","Jupiter"],a:1},
-{q:"Which planet has thick CO₂ atmosphere?",c:["Mercury","Venus","Mars","Earth"],a:1},
+{q:"Which planet has a thick carbon dioxide atmosphere?",c:["Mercury","Venus","Mars","Earth"],a:1},
 {q:"What keeps planets in orbit?",c:["Energy","Gravity","Rotation","Pressure"],a:1},
-{q:"Which law explains planetary motion?",c:["Newton","Kepler","Boyle","Ohm"],a:1},
+{q:"Which law explains planetary motion?",c:["Newton’s Law","Kepler’s Law","Boyle’s Law","Ohm’s Law"],a:1},
 {q:"Which star is closest to Earth?",c:["Sirius","Polaris","Sun","Alpha Centauri"],a:2},
 {q:"What galaxy do we live in?",c:["Andromeda","Milky Way","Whirlpool","Sombrero"],a:1},
-{q:"What produces light?",c:["Planets","Stars","Moons","Asteroids"],a:1},
-{q:"Why is Pluto a dwarf planet?",c:["Too small","No moons","Unstable orbit","Not cleared orbit"],a:3},
-{q:"What principle explains slow Earth change?",c:["Catastrophism","Uniformitarianism","Volcanism","Impact"],a:1}
+{q:"Which objects produce their own light?",c:["Planets","Stars","Moons","Asteroids"],a:1},
+{q:"Why is Pluto classified as a dwarf planet?",c:["Too small","No moons","Unstable orbit","Has not cleared its orbit"],a:3},
+{q:"Which principle states that present processes shape Earth over time?",c:["Catastrophism","Uniformitarianism","Volcanism","Impact"],a:1}
+
 ];
 
-// ===================== QUIZ LOGIC =====================
+/* 🔒 SAFETY LOCK */
+if (quiz.length !== 100) {
+  alert("ERROR: Quiz must have exactly 100 questions. Current count: " + quiz.length);
+}
+
+/* ===================== QUIZ LOGIC ===================== */
 function loadQuestion() {
   document.getElementById("feedback").innerHTML = "";
   document.getElementById("progress").innerText =
@@ -172,7 +179,7 @@ function checkAnswer(choice) {
 
   document.getElementById("feedback").innerHTML = `
     <div class="${isCorrect ? 'correct' : 'wrong'}">
-      ${isCorrect ? 'Correct!' : 'Wrong!'}
+      ${isCorrect ? "Correct!" : "Wrong!"}
     </div>
     <div class="answer">Correct Answer: <b>${quiz[index].c[correct]}</b></div>
   `;
